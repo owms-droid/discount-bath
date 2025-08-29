@@ -1,0 +1,128 @@
+---
+interface Transform {
+    title: string;
+    description: string;
+    beforeImg: string;
+    afterImg: string;
+    cost: string;
+    duration: string;
+}
+
+const transformations: Transform[] = [
+    {
+        title: "Modern Master Bath Makeover",
+        description:
+            "Complete renovation including new vanity, walk-in shower, and luxury vinyl flooring",
+        beforeImg: "/images/before-master.jpg",
+        afterImg: "/images/after-master.jpg",
+        cost: "$8,500",
+        duration: "7 days",
+    },
+    {
+        title: "Guest Bathroom Update",
+        description:
+            "Updated fixtures, new tile work, and fresh paint for a modern look",
+        beforeImg: "/images/before-guest.jpg",
+        afterImg: "/images/after-guest.jpg",
+        cost: "$4,900",
+        duration: "4 days",
+    },
+    {
+        title: "Small Space Transformation",
+        description:
+            "Space-saving solutions with modern fixtures and bright design",
+        beforeImg: "/images/before-small.jpg",
+        afterImg: "/images/after-small.jpg",
+        cost: "$3,800",
+        duration: "3 days",
+    },
+];
+---
+
+<section class="py-16 bg-gray-50">
+    <div class="section-wrapper">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold">
+                Real Transformations, Real Savings
+            </h2>
+            <p class="mt-4 text-lg text-slate-600">
+                See how we transform bathrooms while saving our customers
+                thousands
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {
+                transformations.map((item) => (
+                    <div class="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
+                        <div class="relative group cursor-pointer">
+                            <img
+                                src={item.afterImg}
+                                alt={`After: ${item.title}`}
+                                class="w-full h-48 object-cover transition-opacity duration-300 group-hover:opacity-0"
+                            />
+                            <img
+                                src={item.beforeImg}
+                                alt={`Before: ${item.title}`}
+                                class="w-full h-48 object-cover absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                            />
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
+                                <span class="text-white text-sm font-medium">
+                                    Hover to see before
+                                </span>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="font-bold text-xl mb-2">{item.title}</h3>
+                            <p class="text-slate-600 mb-4">
+                                {item.description}
+                            </p>
+                            <div class="flex items-center justify-between text-sm">
+                                <div class="flex items-center gap-2">
+                                    <svg
+                                        class="w-5 h-5 text-brand-forest"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                                        />
+                                    </svg>
+                                    <span class="font-semibold">
+                                        {item.cost}
+                                    </span>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <svg
+                                        class="w-5 h-5 text-brand-forest"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        viewBox="0 0 24 24"
+                                    >
+                                        <path
+                                            stroke-linecap="round"
+                                            stroke-linejoin="round"
+                                            stroke-width="2"
+                                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+                                        />
+                                    </svg>
+                                    <span>{item.duration}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+
+        <div class="text-center mt-12">
+            <a href="#contact" class="btn btn-primary"
+                >Start Your Transformation</a
+            >
+        </div>
+    </div>
+</section>

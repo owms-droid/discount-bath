@@ -1,0 +1,43 @@
+---
+import "../styles/global.css";
+interface Props {
+    title?: string;
+    description?: string;
+    image?: string;
+    canonicalURL?: string;
+}
+
+const {
+    title = "Discount Bath - Home Remodeling",
+    description = "Professional bathroom remodeling services",
+    image = "/images/social-card.jpg",
+    canonicalURL = new URL(Astro.url.pathname, Astro.site).href,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <meta name="theme-color" content="#0f4b40" />
+        <meta name="robots" content="index,follow" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={canonicalURL} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:image" content={image} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={title} />
+        <meta name="twitter:description" content={description} />
+        <meta name="twitter:image" content={image} />
+        <link rel="canonical" href={canonicalURL} />
+        <meta property="og:description" content={description} />
+    </head>
+    <body class="antialiased">
+        <slot />
+    </body>
+</html>

@@ -1,0 +1,80 @@
+---
+interface ServiceItem {
+    title: string;
+    desc: string;
+}
+
+interface Props {
+    items?: ServiceItem[];
+    isLoading?: boolean;
+}
+
+const { items, isLoading = false }: Props = Astro.props;
+
+const defaultItems: ServiceItem[] = [
+    {
+        title: "Full Bath Remodeling",
+        desc: "Complete bathroom transformations with premium fixtures at affordable prices",
+    },
+    {
+        title: "Tub & Shower Updates",
+        desc: "Modern shower installations and bathtub replacements or refinishing",
+    },
+    {
+        title: "Vanity & Storage",
+        desc: "Custom vanities and smart storage solutions for any space",
+    },
+    {
+        title: "Tile Installation",
+        desc: "Expert tile work for floors, walls, and custom shower designs",
+    },
+    {
+        title: "Lighting & Fixtures",
+        desc: "Modern lighting solutions and fixture upgrades",
+    },
+    {
+        title: "Accessibility Updates",
+        desc: "ADA-compliant modifications and aging-in-place solutions",
+    },
+];
+---
+
+<section id="services" class="py-16">
+    <div class="section-wrapper">
+        <h2 class="text-2xl font-semibold">Our Bathroom Services</h2>
+        <p class="mt-2 text-slate-600 max-w-2xl">
+            From quick updates to complete renovations, we offer a full range of
+            bathroom remodeling services. All our work comes with a satisfaction
+            guarantee and competitive pricing.
+        </p>
+
+        <div class="mt-8 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {
+                isLoading
+                    ? Array(3)
+                          .fill(0)
+                          .map((_, i) => (
+                              <article class="card animate-pulse">
+                                  <div class="h-6 bg-slate-200 rounded w-3/4" />
+                                  <div class="mt-2 h-4 bg-slate-100 rounded w-full" />
+                              </article>
+                          ))
+                    : (items ?? defaultItems).map((item: ServiceItem) => (
+                          <article class="card">
+                              <h3 class="font-semibold">{item.title}</h3>
+                              <p class="mt-2 text-sm text-slate-600">
+                                  {item.desc}
+                              </p>
+                          </article>
+                      ))
+            }
+        </div>
+        {
+            !isLoading && items?.length === 0 && (
+                <p class="text-center text-slate-500 mt-8">
+                    No services available at the moment.
+                </p>
+            )
+        }
+    </div>
+</section>

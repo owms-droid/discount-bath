@@ -1,0 +1,281 @@
+---
+interface Props {
+    title: string;
+    description: string;
+    background?: string;
+    image?: string;
+    rating?: number;
+    savingsAmount?: string;
+    ctaText?: string;
+    beforeAfterImage?: boolean;
+}
+
+const { 
+    title, 
+    description, 
+    background = "#1a6b5d",
+    image = "/images/luxury-bathroom.jpg",
+    rating = 4.9,
+    savingsAmount = "40%",
+    ctaText = "Schedule Free Consultation",
+    beforeAfterImage = true
+} = Astro.props;
+
+// Brand colors
+const colors = {
+    primary: "#1a6b5d",
+    secondary: "#7BB49A",
+    accent: "#4ade80"
+};
+---
+
+<div class="social-card">
+    <div class="overlay"></div>
+    {image && <div class="background-image"></div>}
+    {beforeAfterImage && (
+        <div class="before-after-container">
+            <div class="before" style="background-image: url(/images/before-master.jpg)">
+                <span class="label">BEFORE</span>
+            </div>
+            <div class="after" style="background-image: url(/images/after-master.jpg)">
+                <span class="label">AFTER</span>
+            </div>
+        </div>
+    )}
+    <div class="content">
+        <div class="brand">
+            <div class="logo">D</div>
+            <span>DiscountBath</span>
+        </div>
+        <h1>{title}</h1>
+        <p>{description}</p>
+        <div class="footer">
+            <div class="metrics">
+                <div class="rating">
+                    <span class="stars">{"★".repeat(Math.floor(rating))}</span>
+                    <span class="rating-text">{rating}/5</span>
+                </div>
+                <div class="savings highlight">Save up to {savingsAmount}</div>
+            </div>
+            <div class="cta">
+                {ctaText}
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+                </svg>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style define:vars={{ background, image }}>
+    .social-card {
+        width: 1200px;
+        height: 630px;
+        background: var(--background);
+        color: white;
+        padding: 60px;
+        position: relative;
+        overflow: hidden;
+        font-family: system-ui, -apple-system, sans-serif;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        border-radius: 16px;
+
+    .background-image {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url(var(--image));
+        background-size: cover;
+        background-position: center;
+        opacity: 0.3;
+    }
+
+    .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            45deg,
+            var(--background) 0%,
+            transparent 100%
+        );
+        z-index: 1;
+    }
+
+    .content {
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        position: relative;
+        z-index: 2;
+    }
+
+    .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 40px;
+    }
+
+    .brand .logo {
+        width: 40px;
+        height: 40px;
+        background: #7BB49A;
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        font-weight: bold;
+        border-radius: 8px;
+        box-shadow: 0 4px 12px rgba(123, 180, 154, 0.3);
+    }
+
+    .brand span {
+        font-size: 24px;
+        font-weight: bold;
+        color: #7BB49A;
+        letter-spacing: -0.5px;
+    }
+
+    .before-after-container {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 400px;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 40px;
+        z-index: 1;
+    }
+
+    .before, .after {
+        flex: 1;
+        background-size: cover;
+        background-position: center;
+        border-radius: 12px;
+        position: relative;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease;
+    }
+
+    .before:hover, .after:hover {
+        transform: scale(1.02);
+    }
+
+    .label {
+        position: absolute;
+        top: 12px;
+        left: 12px;
+        background: rgba(0, 0, 0, 0.6);
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 12px;
+        font-weight: 500;
+    }
+
+    h1 {
+        font-size: 68px;
+        margin: 0 0 20px;
+        line-height: 1.1;
+        font-weight: bold;
+        background: linear-gradient(90deg, #ffffff, #e0e0e0);
+        -webkit-background-clip: text;
+        color: transparent;
+    }
+
+    p {
+        font-size: 36px;
+        margin: 0;
+        opacity: 0.9;
+        line-height: 1.4;
+        max-width: 90%;
+    }
+
+    .footer {
+        margin-top: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .metrics {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+    }
+
+    .rating {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 8px 16px;
+        border-radius: 30px;
+    }
+
+    .stars {
+        color: #ffd700;
+        font-size: 20px;
+        letter-spacing: -1px;
+    }
+
+    .rating-text {
+        font-size: 16px;
+        font-weight: 500;
+        opacity: 0.9;
+    }
+
+    .savings {
+        font-size: 18px;
+        font-weight: bold;
+        color: #4ade80;
+        padding: 8px 16px;
+        background: rgba(74, 222, 128, 0.1);
+        border-radius: 30px;
+        border: 1px solid rgba(74, 222, 128, 0.3);
+    }
+
+    .highlight {
+        animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+
+    .cta {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: #7BB49A;
+        color: white;
+        padding: 12px 24px;
+        border-radius: 30px;
+        font-weight: 600;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .cta:hover {
+        transform: translateY(-2px);
+        background: #8bc2a7;
+        box-shadow: 0 4px 20px rgba(123, 180, 154, 0.4);
+    }
+
+    .icon {
+        width: 20px;
+        height: 20px;
+    }
+</style>

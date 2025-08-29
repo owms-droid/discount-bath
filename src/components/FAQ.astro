@@ -1,0 +1,46 @@
+---
+const faqs = [
+    {
+        q: "How long does a bathroom remodel take?",
+        a: "A typical full bathroom remodel takes 5-7 days. Simple updates like tub replacement can be completed in 1-2 days. We'll provide a detailed timeline during consultation.",
+    },
+    {
+        q: "What makes your prices more affordable?",
+        a: "We work directly with manufacturers and buy in bulk to get the best prices on quality materials. Our efficient processes and experienced team help keep labor costs down.",
+    },
+    {
+        q: "Do you offer warranties?",
+        a: "Yes! We provide a 5-year warranty on installation and labor. Most fixtures come with manufacturer warranties ranging from 1-10 years.",
+    },
+    {
+        q: "Do you handle permits and plumbing?",
+        a: "Absolutely. We handle all necessary permits, inspections, and have licensed plumbers on our team for any required plumbing work.",
+    },
+    {
+        q: "Can I finance my bathroom remodel?",
+        a: "Yes! We offer several financing options including 0% APR for 12 months and flexible payment plans to fit your budget.",
+    },
+    {
+        q: "What areas do you serve?",
+        a: "We serve the entire metropolitan area and surrounding suburbs within a 50-mile radius. Contact us to confirm service in your location.",
+    },
+];
+---
+
+<section class="py-16 bg-white">
+    <div class="section-wrapper">
+        <h2 class="text-2xl font-semibold text-center">Still Have A Question?</h2>
+        <div class="mt-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+            {
+                faqs.map((f) => (
+                    <details class="p-4 border rounded-lg">
+                        <summary class="font-semibold cursor-pointer">
+                            {f.q}
+                        </summary>
+                        <p class="mt-2 text-slate-600">{f.a}</p>
+                    </details>
+                ))
+            }
+        </div>
+    </div>
+</section>

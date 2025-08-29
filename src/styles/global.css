@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+    /* Brand Colors */
+    --brand: #1F2D3D;
+    --accent: #7BB49A;
+}
+
+@layer base {
+    html {
+        scroll-behavior: smooth;
+    }
+
+    body {
+        font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto;
+        color: #0f172a;
+        background: white;
+        -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+        color: var(--accent);
+        text-decoration: none;
+    }
+
+    img {
+        display: block;
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+@layer utilities {
+
+    /* Custom utility classes */
+    .transition-standard {
+        transition-property: all;
+        transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+        transition-duration: 200ms;
+    }
+}
+
+/* Component styles using standard CSS */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.625rem 1.25rem;
+    border-radius: 0.375rem;
+    font-weight: 600;
+    transition: all 200ms ease-in-out;
+}
+
+.btn-primary {
+    background-color: var(--brand);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent);
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+.btn-secondary {
+    background-color: white;
+    color: var(--brand);
+    border: 1px solid var(--brand);
+}
+
+.btn-secondary:hover {
+    background-color: rgb(249 250 251);
+}
+
+.section-wrapper {
+    width: 100%;
+    max-width: 72rem;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+@media (min-width: 640px) {
+    .section-wrapper {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+    }
+}
+
+.card {
+    background-color: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    padding: 1.5rem;
+    transition: box-shadow 200ms ease-in-out;
+}
+
+.card:hover {
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+.section {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+@media (min-width: 640px) {
+    .section {
+        padding-top: 4rem;
+        padding-bottom: 4rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .section {
+        padding-top: 5rem;
+        padding-bottom: 5rem;
+    }
+}

@@ -1,0 +1,39 @@
+---
+const steps = [
+    {
+        title: "Free Consultation",
+        desc: "We discuss your dream bathroom and budget. Get a same-day quote with our mobile showroom.",
+    },
+    {
+        title: "Design & Selection",
+        desc: "Choose from our curated collection of fixtures, tiles, and finishes at discount prices.",
+    },
+    {
+        title: "Scheduling & Prep",
+        desc: "We handle permits and create a detailed timeline. Most projects start within 2 weeks.",
+    },
+    {
+        title: "Expert Installation",
+        desc: "Our certified team completes your project on time and on budget, with minimal disruption.",
+    },
+];
+---
+
+<section id="process" class="py-16 bg-brand-forest/5">
+    <div class="section-wrapper">
+        <h2 class="text-2xl font-semibold text-center">Our Working Process</h2>
+        <div class="mt-6 grid grid-cols-1 md:grid-cols-4 gap-6">
+            {
+                steps.map((s, i) => (
+                    <div class="card text-center">
+                        <div class="w-10 h-10 rounded-full bg-brand-forest text-white flex items-center justify-center mx-auto">
+                            {i + 1}
+                        </div>
+                        <h3 class="mt-4 font-semibold">{s.title}</h3>
+                        <p class="mt-2 text-sm text-slate-600">{s.desc}</p>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>

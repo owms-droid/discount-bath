@@ -1,0 +1,37 @@
+---
+interface Project {
+    title: string;
+    img: string;
+}
+
+const projects: Project[] = Astro.props.projects ?? [
+    { title: "D-Orex Home Interior", img: "/images/p1.jpg" },
+    { title: "Orion Home Studio", img: "/images/p2.jpg" },
+    { title: "Titan Office Interior", img: "/images/p3.jpg" },
+    { title: "Cozy Home Interior", img: "/images/p4.jpg" },
+];
+---
+
+<section id="projects" class="py-16 bg-white">
+    <div class="section-wrapper">
+        <h2 class="text-2xl font-semibold text-center">Our Projects & Designs</h2>
+        <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {
+                projects.map((p: Project) => (
+                    <figure class="img-figure">
+                        <img
+                            src={p.img}
+                            alt={p.title}
+                            class="w-full h-56 object-cover"
+                            loading="lazy"
+                            onerror="this.src='/images/placeholder.jpg'"
+                        />
+                        <figcaption class="p-4">
+                            <h3 class="font-semibold">{p.title}</h3>
+                        </figcaption>
+                    </figure>
+                ))
+            }
+        </div>
+    </div>
+</section>
