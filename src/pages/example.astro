@@ -1,4 +1,8 @@
----// Generate social image at build time
+---
+import { generateSocialImage } from "../utils/generateSocialImage";
+import BaseLayout from "../layouts/BaseLayout.astro";
+//Generate social image at build time
+
 const socialImagePath = '/images/social-card.png';
 if (import.meta.env.PROD) {
     await generateSocialImage({
@@ -8,18 +12,8 @@ if (import.meta.env.PROD) {
         width: 1200,
         height: 630,
         bgColor: 'var(--brand)'
-    });{ generateSocialImage } from "../utils/generateSocialImage";
-import BaseLayout from "../layouts/BaseLayout.astro";
-
-// Generate social image at build time
-const socialImagePath = "/images/social-card.jpg";
-if (import.meta.env.PROD) {
-    await generateSocialImage(
-        "Discount Bath - Professional Remodeling",
-        "Transform your bathroom with our expert remodeling services",
-        `./public${socialImagePath}`,
-    );
-}
+    })
+};
 ---
 
 <BaseLayout
